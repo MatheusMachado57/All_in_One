@@ -1,11 +1,13 @@
 ---
-title: "Untitled"
+title: "PCA"
 author: "Matheus Machado de Almeida"
 date: "26/09/2021"
 output: html_document
 ---
 
-```{r}
+```{r, include=F}
+library(MVar.pt)
+library(caret)
 require(readr)
 
 #carregar banco saude.csv
@@ -14,33 +16,38 @@ saude <- read_csv2("saude.CSV")
 
 # remover variáveis qualitativas
 saude2 <- saude[,-1]
+```
 
-### Utilizando prcomp() - Primerio método ###########################
+### Utilizando prcomp() - Primerio método
+
+```{r}
 pca <- prcomp(saude2, scale = TRUE) 
-pca
+print(pca)
 
 ## plot pc1 and pc2
 plot(pca$x[,1], pca$x[,2])
 
 # Construindo scree plot
 screeplot(pca)
+```
 
-### Utilizando pacote MVar.pt - Segundo Método ######################
+### Utilizando pacote MVar.pt - Segundo Método
 
-library(MVar.pt)
-
+```{r}
 PC <- PCA(saude2, type=2) # Executa o PCA
 Titles = c("Grafico das Observacoes", 
            "Circulo de Correlacoes")
 
-Plot.PCA(PC, Titles)
+print(Plot.PCA(PC, Titles))
+```
 
+```{r}
 PC[["mtxAutvlr"]]
+```
 
-### PCA com train() - Terceiro Método ###############################
+### PCA com train() - Terceiro Método
 
-library(caret)
-
+```{r}
 # Criar amostras treino/teste
 set.seed(100)
 inTrain  <- createDataPartition(y = saude$Sexo, 
@@ -66,9 +73,11 @@ modelFit_pca
 
 # Detalhes do pre-processamento
 modelFit_pca$preProcess
+```
 
-### PCA com preProcess() - Quarto Método ############################
+### PCA com preProcess() - Quarto Método
 
+```{r}
 # padrao: thresh=0.95
 pca <- preProcess(training, 
                   method = "pca")
