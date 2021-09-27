@@ -38,7 +38,7 @@ PC <- PCA(saude2, type=2) # Executa o PCA
 Titles = c("Grafico das Observacoes", 
            "Circulo de Correlacoes")
 
-print(Plot.PCA(PC, Titles))
+Plot.PCA(PC, Titles)
 ```
 
 ```{r}
