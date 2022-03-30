@@ -99,5 +99,3 @@ dummies <- dummyVars(wage ~ jobclass + race, data = Wage,
 
 jobdummies <- predict(dummies,
                       newdata = Wage)
-
-
