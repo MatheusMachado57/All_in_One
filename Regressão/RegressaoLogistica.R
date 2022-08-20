@@ -5,10 +5,7 @@
 # https://support.rstudio.com/hc/en-us/articles/200532197-Character-Encoding
 
 # Definindo o diretório de trabalho
-setwd("C:/Users/mathe/Desktop/Arquivos/
-      Pós UFF - Formação Cientista de Dados/
-      4 - Machine Learning com R e Python/
-      Cap 5 - Regressão - II")
+setwd("C:/Users/mathe/Área de Trabalho/GitHub/All_in_One/Regressão")
 
 getwd()
 
@@ -20,7 +17,7 @@ library(e1071)
 # Carregando o dataset um um dataframe
 credito_dataset <- read.csv("credit_dataset_final.csv", 
                              header = TRUE, 
-                            sep = ",")
+                             sep = ",")
 
 head(credito_dataset)
 summary(credito_dataset)
